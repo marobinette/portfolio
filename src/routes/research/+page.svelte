@@ -36,7 +36,7 @@
 </script>
 
 <svelte:head>
-  <title>Mikey - Research</title>
+  <title>Michael Robinette - Research</title>
 </svelte:head>
 
 <div class="container">

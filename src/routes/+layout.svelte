@@ -10,7 +10,7 @@
 </script>
 
 <svelte:head>
-  <title>Mikey</title>
+  <title>Michael Robinette</title>
 </svelte:head>
 
 <header>
@@ -32,7 +32,7 @@
 
 <footer>
   <div class="container">
-    <span>Mikey · UVM · {new Date().getFullYear()}</span>
+    <span>Michael Robinette · UVM · {new Date().getFullYear()}</span>
     <span class="links">
       <a href="https://github.com/marobinette" target="_blank" rel="noopener">GitHub</a>
       <a href="mailto:michael.robinette@uvm.edu">Email</a>
