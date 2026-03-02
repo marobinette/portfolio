@@ -8,7 +8,7 @@
 </script>
 
 <svelte:head>
-  <title>Mikey - About</title>
+  <title>Michael Robinette - About</title>
 </svelte:head>
 
 <div class="container">
@@ -18,7 +18,7 @@
       <span class="tag">University of Vermont</span>
     </div>
 
-    <h1>Hello, I'm Mikey.</h1>
+    <h1>Michael Robinette</h1>
 
     <p class="lead">
       I'm a graduate student at the University of Vermont working at the

@@ -15,7 +15,7 @@
 
 <header>
   <nav class="container">
-    <a href="/" class="wordmark">M.</a>
+    <a href="/" class="wordmark"></a>
     <ul>
       {#each nav as { href, label }}
         <li>
@@ -34,8 +34,8 @@
   <div class="container">
     <span>Mikey · UVM · {new Date().getFullYear()}</span>
     <span class="links">
-      <a href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
-      <a href="mailto:you@uvm.edu">Email</a>
+      <a href="https://github.com/marobinette" target="_blank" rel="noopener">GitHub</a>
+      <a href="mailto:michael.robinette@uvm.edu">Email</a>
     </span>
   </div>
 </footer>
