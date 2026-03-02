@@ -38,6 +38,6 @@ declare module "$app/types" {
 		};
 		Pathname(): "/" | "/blog" | "/research";
 		ResolvedPathname(): `${"" | `/${string}`}${ReturnType<AppTypes['Pathname']>}`;
-		Asset(): string & {};
+		Asset(): "/vcsi-logo.png" | string & {};
 	}
 }

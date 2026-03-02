@@ -68,6 +68,13 @@
         Mathematical modeling of misinformation dynamics
       </li>
     </ul>
+
+    <div class="affiliation">
+      <a href="https://vermontcomplexsystems.org" target="_blank" rel="noopener">
+        <img src="/vcsi-logo.png" alt="Vermont Complex Systems Institute" />
+        <span>Vermont Complex Systems Institute</span>
+      </a>
+    </div>
   </aside>
 </div>
 
@@ -167,6 +174,40 @@
     border-radius: 50%;
     background: var(--accent);
     margin-top: 0.5rem;
+  }
+
+  .affiliation {
+    margin-top: 1.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--rule);
+  }
+
+  .affiliation a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    text-decoration: none;
+    opacity: 0.75;
+    transition: opacity 0.2s;
+  }
+
+  .affiliation a:hover { opacity: .8; }
+
+  .affiliation img {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+  }
+
+  .affiliation span {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-muted);
+    text-align: center;
+    line-height: 1.4;
   }
 
   /* Responsive */
