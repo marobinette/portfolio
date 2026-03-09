@@ -16,6 +16,7 @@
   "type": "module",
   "dependencies": {
     "@sveltejs/adapter-vercel": "^6.3.3",
-    "@sveltejs/vite-plugin-svelte": "^3.1.2"
+    "@sveltejs/vite-plugin-svelte": "^3.1.2",
+    "katex": "^0.16.38"
   }
 }

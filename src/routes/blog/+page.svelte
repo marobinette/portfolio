@@ -4,29 +4,12 @@
   // and using mdsvex (svelte markdown processor) to render them.
   const posts = [
     {
-      slug: 'on-political-emotion',
-      title: 'On Measuring Emotion in Political Text',
-      date: 'February 2025',
-      description:
-        'What does it mean for a congressional email to be "angry"? Some thoughts on the limits and possibilities of lexicon-based vs. model-based emotion detection.',
-      tags: ['NLP', 'Research'],
-    },
-    {
-      slug: 'misinformation-compartmental',
-      title: 'SIR Models and the Spread of Misinformation',
-      date: 'January 2025',
-      description:
-        "Epidemiological compartmental models have a long history in mathematical biology. Here's what happens when you apply them to social contagion -- and where the analogy breaks down.",
-      tags: ['Modeling', 'Networks'],
-    },
-    {
-      slug: 'ai-course-catalogs',
-      title: 'What Universities Think AI Is',
-      date: 'December 2024',
-      description:
-        'Mining course catalog data across dozens of institutions revealed how differently universities define "AI" -- and how that definition has shifted over twenty years.',
-      tags: ['Education', 'Research'],
-    },
+      slug: 'master-equations',
+      title: 'Master Equations',
+      date: 'March 2026',
+      description: 'An introduction to master equations and their role in modeling stochastic systems.',
+      tags: ['Modeling', 'Math'],
+    }
   ];
 
   /** @param {string} dateStr */
