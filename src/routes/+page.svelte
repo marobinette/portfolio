@@ -33,13 +33,6 @@
       university curricula. I'm also exploring dynamical models of misinformation
       spread, drawing on epidemiological frameworks like SIR and SIS systems.
     </p>
-
-    <p>
-      I work with Python, Svelte, PostgreSQL, and LaTeX on a daily basis, and
-      spend a lot of time on the Vermont Advanced Computing Core (VACC) running
-      large-scale NLP pipelines.
-    </p>
-
     <hr />
 
     <div class="interests">
