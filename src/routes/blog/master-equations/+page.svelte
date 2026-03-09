@@ -72,7 +72,7 @@
     </div>
     <h1>Master Equations</h1>
     <p class="lead">
-    Master equations will allow us to move beyond mean-field approach, which track the average behavior of a system. Instead, we will track the system's actual distribution over time.
+    Master equations will allow us to move beyond a mean-field approach, which tracks the average behavior of a system. Instead, we will track the system's actual distribution over time.
     </p>
   </header>
 
