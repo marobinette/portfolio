@@ -237,6 +237,17 @@
     </div>
   </section>
 
+<div class="callout">
+  <strong>The pattern for every term</strong>
+  Every term in a master equation follows the same three-part structure:
+  <br /><br />
+  <strong>(±) &times; rate(originating state) &times; P(originating state)</strong>
+  <br /><br />
+  The sign is determined by direction of flow relative to the state you are
+  writing the equation for — negative if probability is leaving, positive if
+  it is arriving. The rate and the distribution are both evaluated at the
+  state the probability is <em>departing from</em>, not where it is going.
+</div>
   <hr />
 
   <!-- ── 4. Birth-death process ─────────────────────────────────────────── -->
