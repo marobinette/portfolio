@@ -6,61 +6,72 @@
     katex.renderToString(tex, { displayMode: display, throwOnError: false });
 
   // ── Display equations ────────────────────────────────────────────────────
-  const eqNorm = r(String.raw`\sum_n P_n(t) = 1`, true);
-  const eqNormDt = r(String.raw`\sum_n \frac{dP_n}{dt} = 0`, true);
-  const eqGeneral = r(String.raw`\frac{dP_n}{dt}
+  const eqNorm       = r(String.raw`\sum_n P_n(t) = 1`, true);
+  const eqNormDt     = r(String.raw`\sum_n \frac{dP_n}{dt} = 0`, true);
+  const eqCurrent    = r(String.raw`\frac{d}{dt}P_n(t) = \sum_{m \neq n} J_{n \to m}(t) + J_{m \to n}(t)`, true);
+  const eqGeneral    = r(String.raw`\frac{dP_n}{dt}
     = \sum_m R(m \to n)\,P_m
     \;-\; \sum_m R(n \to m)\,P_n`, true);
+
+  const eqBDRates    = r(String.raw`J_{n \to n+1} = \mu, \qquad J_{n > 0 \to n-1} = n\nu`, true);
+  const eqBDn0       = r(String.raw`\frac{d}{dt}P_0 = -\mu P_0 + \nu P_1`, true);
+  const eqBDfull     = r(String.raw`\frac{d}{dt}P_n = -(\mu + n\nu)\,P_n + (n+1)\nu\,P_{n+1} + \mu\,P_{n-1} \qquad n > 0`, true);
+
   const eqVoterRates = r(String.raw`R(n \to n-1) = n\cdot\frac{N-n}{N}, \qquad
     R(n \to n+1) = (N-n)\cdot\frac{n}{N}`, true);
-  const eqVoterFull = r(String.raw`\frac{dP_n}{dt}
+  const eqVoterFull  = r(String.raw`\frac{dP_n}{dt}
     = -\frac{n(N-n)}{N}P_n
     - \frac{(N-n)n}{N}P_n
     + \frac{(n+1)(N-n-1)}{N}P_{n+1}
     + \frac{(N-n+1)(n-1)}{N}P_{n-1}`, true);
-  const eqSISRates = r(String.raw`R(n \to n+1) = \beta(N-n)n, \qquad
+  const eqSISRates   = r(String.raw`R(n \to n+1) = \beta(N-n)n, \qquad
     R(n \to n-1) = n\alpha`, true);
-  const eqSISFull = r(String.raw`\frac{dP_n}{dt}
+  const eqSISFull    = r(String.raw`\frac{dP_n}{dt}
     = -n\alpha\, P_n
     - \beta(N-n)n\, P_n
     + (n+1)\alpha\, P_{n+1}
     + \beta(N-n+1)(n-1)\,P_{n-1}`, true);
-  const eqSISBC = r(String.raw`P_{-1} = P_{N+1} = 0`, true);
-  const eqMeanField = r(String.raw`\frac{dI}{dt} = \beta(N - I)I - \alpha I`, true);
+  const eqSISBC      = r(String.raw`P_{-1} = P_{N+1} = 0`, true);
+  const eqMeanField  = r(String.raw`\frac{dI}{dt} = \beta(N - I)I - \alpha I`, true);
 
-  // ── Inline math ────────────────────────────────────────────────────────
-  const i_Pn = r(String.raw`P_n(t)`);
-  const i_n = r(String.raw`n`);
-  const i_N = r(String.raw`N`);
-  const i_beta = r(String.raw`\beta`);
-  const i_alpha = r(String.raw`\alpha`);
-  const i_betaNN = r(String.raw`\beta(N-n)n`);
-  const i_nN = r(String.raw`n/N`);
-  const i_nN1 = r(String.raw`n/(N-1)`);
-  const i_R0 = r(String.raw`\mathcal{R}_0 = \beta/\alpha`);
-  const i_nplusone = r(String.raw`n+1 \to n`);
-  const i_nminusone = r(String.raw`n-1 \to n`);
-  const i_Pnplus = r(String.raw`P_{n+1}`);
+  // ── Inline math ─────────────────────────────────────────────────────────
+  const i_Pn      = r(String.raw`P_n(t)`);
+  const i_n       = r(String.raw`n`);
+  const i_N       = r(String.raw`N`);
+  const i_mu      = r(String.raw`\mu`);
+  const i_nu      = r(String.raw`\nu`);
+  const i_nnu     = r(String.raw`n\nu`);
+  const i_beta    = r(String.raw`\beta`);
+  const i_alpha   = r(String.raw`\alpha`);
+  const i_R0      = r(String.raw`\mathcal{R}_0 = \beta/\alpha`);
+  const i_nN      = r(String.raw`n/N`);
+  const i_nN1     = r(String.raw`n/(N-1)`);
+  const i_NmI     = r(String.raw`N-n`);
+  const i_Pnplus  = r(String.raw`P_{n+1}`);
   const i_Pnminus = r(String.raw`P_{n-1}`);
-  const i_Pn1 = r(String.raw`P_{n+1}`);
-  const i_nzero = r(String.raw`n=0`);
-  const i_NmI = r(String.raw`N-n`);
-  const eqLit01 = r(String.raw`t`);
-  const eqLit02 = r(String.raw`P_{n-1}`);
-  const eqLit03 = r(String.raw`P_n`);
-  const eqLit04 = r(String.raw`P_{n+1}`);
-  const eqLit05 = r(String.raw`n`);
-  const eqLit06 = r(String.raw`n-1`);
+  const i_Pn1     = r(String.raw`P_{n+1}`);
+  const i_nplusone  = r(String.raw`n+1 \to n`);
+  const i_nminusone = r(String.raw`n-1 \to n`);
+  const i_nzero   = r(String.raw`n=0`);
+  const eqLit01   = r(String.raw`t`);
+  const eqLit02   = r(String.raw`P_{n-1}`);
+  const eqLit03   = r(String.raw`P_n`);
+  const eqLit04   = r(String.raw`P_{n+1}`);
+  const eqLit05   = r(String.raw`n`);
+  const eqLit06   = r(String.raw`n-1`);
+  const i_P0      = r(String.raw`P_0`);
+  const i_P1      = r(String.raw`P_1`);
+  const i_Pnmin1  = r(String.raw`P_{-1}`);
 </script>
 
 <svelte:head>
   <title>Master Equations — Michael Robinette</title>
-  <meta name="description" content="Constructing approximate master equations for the Voter Model and SIS epidemic dynamics." />
+  <meta name="description" content="Constructing master equations from scratch: conservation, bookkeeping, birth-death process, Voter Model, and SIS epidemic dynamics." />
 </svelte:head>
 
 <div class="container">
 
-  <!-- ── Header ────────────────────────────────────────────────────────────── -->
+  <!-- ── Header ─────────────────────────────────────────────────────────── -->
   <header class="post-header">
     <div class="meta-row">
       <time class="date">March 2026</time>
@@ -70,86 +81,152 @@
         <span class="tag">Stochastic Processes</span>
       </div>
     </div>
-    <h1>Master Equations</h1>
-    <p class="lead">
-    Master equations will allow us to move beyond a mean-field approach, which tracks the average behavior of a system. Instead, we will track the system's actual distribution over time.
-    </p>
+    <h1>An Introduction to Master Equations</h1>
   </header>
 
+    <p class="attribution">
+    This post references material from 
+    <a href="https://cosmo-notes.github.io/tame/" target="_blank" rel="noopener">TAME course materials</a> 
+    by Laurent Hébert-Dufresne and Guillaume St-Onge.
+    </p>
   <hr />
 
-  <!-- ── 1. What is P_n(t) ─────────────────────────────────────────────────── -->
+  <!-- ── 1. What is P_n(t) ──────────────────────────────────────────────── -->
   <section>
     <h2>1. What is {@html i_Pn}?</h2>
     <p>
-      Let the system have {@html i_N} agents, each in one of two
-      states. Define {@html i_Pn} as the probability that exactly
-      {@html i_n} agents occupy the "active" state at time
-      {@html eqLit01}. This is a full probability distribution — one
-      number per possible value of {@html i_n} — rather than a
-      single average.
+      Consider a system whose condition can be summarized by a single
+      integer {@html i_n} — the count of particles, infected agents,
+      voters holding a given opinion, and so on. Define
+      {@html i_Pn} as the probability that the system is in state
+      {@html i_n} at time {@html eqLit01}.
     </p>
     <p>
-      The distribution must satisfy normalization at all times:
+      A useful mental image: imagine running infinitely many identical
+      but independent copies of the system in parallel. At any moment,
+      {@html i_Pn} is simply the fraction of those copies that find
+      themselves in state {@html i_n}. We are not following a single
+      trajectory — we are following the entire distribution of
+      trajectories.
+    </p>
+
+    <div class="callout">
+      <strong>Master equations vs. compartmental models</strong>
+      Compartmental models (SIR, SIS, etc.) split the
+      <em>parts</em> of a system into boxes. Master equations split a
+      multiverse of <em>whole systems</em> into boxes. Compartmental
+      models lose information about correlations between parts;
+      master equations track the exact state of the system and so
+      lose nothing — at the cost of requiring many more equations.
+    </div>
+
+    <p>
+      To model any system with master equations, three questions
+      must be answered before writing a single equation:
+    </p>
+
+    <ol class="recipe">
+      <li>
+        <span class="step-num">Q1</span>
+        <div><strong>What are the available states?</strong>
+          Define the full set of values {@html i_n} can take.</div>
+      </li>
+      <li>
+        <span class="step-num">Q2</span>
+        <div><strong>What transitions are possible?</strong>
+          Which pairs of states are connected by an event?</div>
+      </li>
+      <li>
+        <span class="step-num">Q3</span>
+        <div><strong>At what rates do they occur?</strong>
+          Assign a transition rate to every arrow.</div>
+      </li>
+    </ol>
+  </section>
+
+  <hr />
+
+  <!-- ── 2. Conservation ────────────────────────────────────────────────── -->
+  <section>
+    <h2>2. Conservation of probability</h2>
+    <p>
+      The distribution {@html i_Pn} must satisfy normalization at
+      every instant:
     </p>
     <div class="eq-block">
       {@html eqNorm}
     </div>
     <p>
-      Differentiating gives a consistency requirement that any valid
-      master equation satisfies automatically:
+      Because this holds for <em>all</em> time, the sum is a
+      constant. The derivative of a constant is zero, so
+      differentiating both sides gives:
     </p>
     <div class="eq-block">
       {@html eqNormDt}
+    </div>
+    <p>
+      This is a powerful consistency check. In a master equation,
+      every probability current {@html r(String.raw`J_{n \to m}`)}
+      appears exactly twice across the full system — once as a loss
+      from state {@html i_n}, and once as a gain to state
+      {@html i_n}. The two contributions cancel in the sum, so the
+      constraint is satisfied automatically by any correctly written
+      master equation.
+    </p>
+
+    <div class="callout">
+      <strong>Practical use</strong>
+      If you sum all your master equations and the result is not
+      zero, you have a missing transition somewhere — probability
+      is leaking out of (or flooding into) your state space. This
+      sum-to-zero check is the first thing to run when debugging a
+      new model.
     </div>
   </section>
 
   <hr />
 
-  <!-- ── 2. Construction recipe ────────────────────────────────────────────── -->
+  <!-- ── 3. Bookkeeping ────────────────────────────────────────────────── -->
   <section>
-    <h2>2. The construction recipe</h2>
+    <h2>3. The bookkeeping principle</h2>
     <p>
-      For birth-death chains — where {@html i_n} only changes by
-      ±1 per event — writing down the master equation is mechanical.
+      The master equation for state {@html i_n} is built entirely
+      from probability currents in and out of that state:
+    </p>
+    <div class="eq-block highlight">
+      {@html eqCurrent}
+    </div>
+    <p>
+      In practice this reduces to a simple rule that applies to
+      every state in every model:
     </p>
 
     <ol class="recipe">
       <li>
         <span class="step-num">01</span>
         <div>
-          <strong>Draw the state chain.</strong>
-          Boxes for {@html eqLit02}, {@html eqLit03},
-          {@html eqLit04} connected by arrows in both directions.
+          <strong>Leaving {@html eqLit03} in any direction → loss.</strong>
+          Subtract the transition rate multiplied by
+          {@html eqLit03}.
         </div>
       </li>
       <li>
         <span class="step-num">02</span>
         <div>
-          <strong>Label each arrow with a rate.</strong>
-          Rate = (number of eligible initiators) ×
-          (probability the event completes). The exact form differs
-          between models depending on the interaction structure.
+          <strong>Entering {@html eqLit03} from any direction → gain.</strong>
+          Add the transition rate (evaluated at the originating
+          state) multiplied by the neighboring
+          {@html i_Pnplus} or {@html i_Pnminus}.
         </div>
       </li>
       <li>
         <span class="step-num">03</span>
         <div>
-          <strong>Write the equation.</strong>
-          Subtract outgoing arrows (loss, multiplied by
-          {@html eqLit03}), add incoming arrows (gain, multiplied
-          by the neighboring {@html i_Pnplus} or
-          {@html i_Pnminus}).
-        </div>
-      </li>
-      <li>
-        <span class="step-num">04</span>
-        <div>
-          <strong>Relabel gain terms.</strong>
-          The rate flowing into {@html eqLit03} from
-          {@html i_Pn1} is the outgoing rate from
-          {@html i_Pn1}, evaluated at {@html i_nplusone}.
-          Similarly for {@html i_nminusone}.
+          <strong>Respect boundaries.</strong>
+          If a neighboring state does not exist (e.g.,
+          {@html i_Pnmin1} when {@html i_nzero}), that term
+          simply drops out. The boundary is enforced by the
+          physics, not by adding extra rules.
         </div>
       </li>
     </ol>
@@ -162,25 +239,113 @@
 
   <hr />
 
-  <!-- ── 3. Voter model ────────────────────────────────────────────────────── -->
+  <!-- ── 4. Birth-death process ─────────────────────────────────────────── -->
   <section>
-    <h2>3. The Voter Model</h2>
+    <h2>4. Worked example: Birth-death process</h2>
+    <p>
+      Particles are created at a constant rate {@html i_mu} from a
+      reservoir and each existing particle disappears independently
+      at rate {@html i_nu}. This is the simplest non-trivial system
+      that exhibits both boundaries and state-dependent rates, making
+      it an ideal first example.
+    </p>
+
+    <p><strong>Answering the three questions:</strong></p>
+    <table>
+      <thead>
+        <tr><th>Question</th><th>Answer</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>States</td>
+          <td>{@html r(String.raw`n \in \{0, 1, 2, \ldots\}`)}</td>
+        </tr>
+        <tr>
+          <td>Transitions</td>
+          <td>
+            {@html r(String.raw`n \to n+1`)} (birth),&nbsp;
+            {@html r(String.raw`n \to n-1`)} (death, only if {@html r(String.raw`n > 0`)})
+          </td>
+        </tr>
+        <tr>
+          <td>Rates</td>
+          <td>
+            Birth: {@html i_mu} (constant, from reservoir).
+            Death: {@html i_nnu} (each of the {@html i_n} particles
+            dies at rate {@html i_nu}).
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>
+      The death rate {@html i_nnu} deserves a moment's attention.
+      Each particle dies independently, so with {@html i_n} particles
+      present there are {@html i_n} independent chances for a death
+      event. The total rate is {@html i_nu} summed {@html i_n} times.
+      Birth, by contrast, comes from an external reservoir rather than
+      from the particles themselves, so its rate is a flat
+      {@html i_mu} regardless of {@html i_n}.
+    </p>
+
+    <div class="eq-block">
+      {@html eqBDRates}
+    </div>
+
+    <p>
+      Applying the bookkeeping principle to each state gives two
+      cases. When {@html i_nzero} the state below does not exist
+      — there are no particles to kill — so the
+      {@html r(String.raw`\mu P_{n-1}`)} gain term has nothing to
+      attach to and drops out entirely:
+    </p>
+    <div class="eq-block">
+      {@html eqBDn0}
+    </div>
+    <p>
+      Read term by term: {@html r(String.raw`-\mu P_0`)} is the
+      loss from a birth event pushing the system up to state 1;
+      {@html r(String.raw`+\nu P_1`)} is the gain from the system
+      being at state 1 and its single particle dying. The
+      {@html i_P1} term is a gain to state 0 — it originates
+      elsewhere and arrives here. For all {@html r(String.raw`n > 0`)}:
+    </p>
+    <div class="eq-block highlight">
+      {@html eqBDfull}
+    </div>
+
+    <div class="callout">
+      <strong>The boundary enforces itself.</strong>
+      Notice the death rate {@html i_nnu} naturally becomes zero
+      at {@html i_nzero}, so no special case would even be
+      needed for that term. The separate {@html i_nzero} equation
+      is only necessary because the
+      {@html r(String.raw`\mu P_{n-1}`)} gain term references a
+      state that does not exist, not because the death terms
+      misbehave.
+    </div>
+  </section>
+
+  <hr />
+
+  <!-- ── 5. Voter model ────────────────────────────────────────────────── -->
+  <section>
+    <h2>5. Example: The Voter Model</h2>
     <p>
       {@html i_N} agents each hold one of two opinions: For (F) or
-      Against (A). At each step, a randomly chosen agent copies a randomly
-      chosen neighbor. Let {@html i_n} = number of F-agents.
+      Against (A). At each step, a randomly chosen agent copies a
+      randomly chosen neighbor. Let {@html i_n} = number of F-agents.
     </p>
     <p>
       To move from {@html eqLit05} to {@html eqLit06}, an F-agent
-      must be chosen and must select an A-neighbor. The rates are:
+      must be chosen <em>and</em> select an A-neighbor. The rates are:
     </p>
     <div class="eq-block">
       {@html eqVoterRates}
     </div>
     <p>
-      Both rates are symmetric in {@html i_n} and
-      {@html i_NmI} — the dynamics treat F and A identically.
-      The full AME:
+      Both rates are symmetric in {@html i_n} and {@html i_NmI} —
+      the dynamics treat F and A identically. The full master equation:
     </p>
     <div class="eq-block highlight">
       {@html eqVoterFull}
@@ -190,23 +355,24 @@
       <strong>Why divide by {@html i_N}?</strong>
       The division converts a neighbor <em>count</em> into a
       <em>probability</em>. Out of all {@html i_N} possible
-      neighbors, a fraction {@html i_nN} are A-type. This is
-      the <em>approximate</em> in AME — the exact version uses
-      {@html i_nN1} (excluding self), valid for large
-      {@html i_N}.
+      neighbors, a fraction {@html i_nN} are A-type. This is the
+      <em>approximate</em> in AME — the exact version uses
+      {@html i_nN1} (excluding self), valid for large {@html i_N}.
     </div>
   </section>
 
   <hr />
 
-  <!-- ── 4. SIS model ──────────────────────────────────────────────────────── -->
+  <!-- ── 6. SIS model ──────────────────────────────────────────────────── -->
   <section>
-    <h2>4. SIS Epidemic Dynamics</h2>
+    <h2>6. Example: SIS Epidemic Dynamics</h2>
     <p>
-      {@html i_N} agents are either Susceptible (S) or Infectious
-      (I). Infection spreads at per-contact rate {@html i_beta};
-      infected agents recover at rate {@html i_alpha}. Let
-      {@html i_n} = number of infectious agents.
+      {@html i_N} agents are either Susceptible (S) or Infectious (I).
+      Infection spreads at per-contact rate {@html i_beta}; infected
+      agents recover at rate {@html i_alpha}. Let {@html i_n} =
+      number of infectious agents. The system is bounded:
+      {@html i_nzero} is a valid absorbing state (extinction) and
+      {@html i_n} cannot exceed {@html i_N}.
     </p>
     <p>
       The key structural difference from the Voter Model:
@@ -219,28 +385,39 @@
       {@html eqSISRates}
     </div>
     <p>
-      The full AME, with boundary conditions:
-      {@html eqSISBC}
+      Applying the bookkeeping principle with boundary conditions
+      {@html eqSISBC}:
     </p>
     <div class="eq-block highlight">
       {@html eqSISFull}
     </div>
 
     <div class="callout">
-      <strong>Remember...</strong>
-      {@html i_alpha} only ever appears in arrows that
-increase {@html i_n} (more infections) and 
-      {@html i_beta} only ever appears in arrows that
-decrease {@html i_n} (more recoveries).
-
-
-
-      Track which process moves the count in which direction and the
-      relabeling follows mechanically.
+      <strong>Keep the directions straight.</strong>
+      Infection (rate {@html i_beta}) increases {@html i_n} —
+      it appears in transitions that move the system
+      <em>up</em>. Recovery (rate {@html i_alpha}) decreases
+      {@html i_n} — it appears in transitions that move the
+      system <em>down</em>. Track which process moves the count
+      in which direction and the relabeling follows mechanically.
     </div>
+
+    <p>
+      The mean-field limit recovers the familiar ODE by replacing
+      the full distribution with its average:
+    </p>
+    <div class="eq-block">
+      {@html eqMeanField}
+    </div>
+    <p>
+      The threshold {@html i_R0} separates extinction from endemic
+      persistence — a result the master equation approach can derive
+      more rigorously by examining the absorbing boundary at
+      {@html r(String.raw`n = 0`)}.
+    </p>
   </section>
 
-  <!-- ── Footer nav ────────────────────────────────────────────────────────── -->
+  <!-- ── Footer nav ───────────────────────────────────────────────────── -->
   <div class="post-footer">
     <a href="/blog" class="back-link">← All posts</a>
   </div>
@@ -321,7 +498,7 @@ decrease {@html i_n} (more recoveries).
     background: color-mix(in srgb, var(--accent) 5%, var(--bg-alt));
   }
 
-  /* Recipe list */
+  /* Recipe / question lists */
   .recipe {
     list-style: none;
     padding: 0;

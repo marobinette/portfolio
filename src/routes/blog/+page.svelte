@@ -5,9 +5,9 @@
   const posts = [
     {
       slug: 'master-equations',
-      title: 'Master Equations',
+      title: 'An Introduction to Master Equations',
       date: 'March 2026',
-      description: 'An introduction to master equations and their role in modeling stochastic systems.',
+      description: 'Developing an intuition for the properties and construction of master equations.',
       tags: ['Modeling', 'Math'],
     }
   ];
@@ -48,13 +48,6 @@
       </article>
     {/each}
   </div>
-
-  <p class="note">
-    Posts link to individual pages -- add those in
-    <code>src/routes/blog/[slug]/+page.svelte</code> when you're ready,
-    or use <a href="https://mdsvex.pngwn.io/" target="_blank" rel="noopener">mdsvex</a>
-    for markdown-powered blog posts.
-  </p>
 </div>
 
 <style>
