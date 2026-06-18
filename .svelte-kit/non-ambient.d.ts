@@ -27,16 +27,21 @@ export {};
 
 declare module "$app/types" {
 	export interface AppTypes {
-		RouteId(): "/" | "/blog" | "/research";
+		RouteId(): "/" | "/api" | "/api/papers" | "/api/papers/[id]" | "/blog" | "/blog/master-equations" | "/papers" | "/research";
 		RouteParams(): {
-			
+			"/api/papers/[id]": { id: string }
 		};
 		LayoutParams(): {
-			"/": Record<string, never>;
+			"/": { id?: string };
+			"/api": { id?: string };
+			"/api/papers": { id?: string };
+			"/api/papers/[id]": { id: string };
 			"/blog": Record<string, never>;
+			"/blog/master-equations": Record<string, never>;
+			"/papers": Record<string, never>;
 			"/research": Record<string, never>
 		};
-		Pathname(): "/" | "/blog" | "/research";
+		Pathname(): "/" | "/api/papers" | `/api/papers/${string}` & {} | "/blog" | "/blog/master-equations" | "/papers" | "/research";
 		ResolvedPathname(): `${"" | `/${string}`}${ReturnType<AppTypes['Pathname']>}`;
 		Asset(): "/vcsi-logo.png" | string & {};
 	}

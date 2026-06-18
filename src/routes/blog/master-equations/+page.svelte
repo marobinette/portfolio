@@ -1,6 +1,5 @@
 <script>
   import katex from 'katex';
-  import 'katex/dist/katex.min.css';
 
   const r = (tex, display=false) =>
     katex.renderToString(tex, { displayMode: display, throwOnError: false });
