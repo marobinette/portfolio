@@ -13,9 +13,29 @@
   ];
   const STATUS_LABEL = { 'to-read': 'To read', reading: 'Reading', read: 'Read' };
 
+  // ── Author filter ────────────────────────────────────────────────────────
+  // Authors are stored as a free-text string ("Jane Doe, John Smith, …").
+  // Split each into individual names so a paper matches whatever position the
+  // author appears in (first, second, third…).
+  const splitAuthors = (s) =>
+    (s ?? '')
+      .split(/[,;]|\band\b/i)
+      .map((a) => a.trim())
+      .filter(Boolean);
+
+  let authorFilter = '';
+
+  $: authorOptions = [...new Set(papers.flatMap((p) => splitAuthors(p.authors)))].sort(
+    (a, b) => a.localeCompare(b)
+  );
+
+  $: visiblePapers = authorFilter
+    ? papers.filter((p) => splitAuthors(p.authors).includes(authorFilter))
+    : papers;
+
   $: grouped = SECTIONS.map((s) => ({
     ...s,
-    items: papers.filter((p) => p.status === s.key),
+    items: visiblePapers.filter((p) => p.status === s.key),
   }));
 
   // ── Admin token (held client-side, sent as Bearer on writes) ─────────────
@@ -198,6 +218,22 @@
     </form>
   {/if}
 
+  {#if authorOptions.length}
+    <div class="filter-bar">
+      <label class="filter-label" for="author-filter">Filter by author</label>
+      <select id="author-filter" bind:value={authorFilter}>
+        <option value="">All authors</option>
+        {#each authorOptions as a}
+          <option value={a}>{a}</option>
+        {/each}
+      </select>
+      {#if authorFilter}
+        <button class="btn ghost" type="button" on:click={() => (authorFilter = '')}>Clear</button>
+        <span class="filter-count">{visiblePapers.length} paper{visiblePapers.length === 1 ? '' : 's'}</span>
+      {/if}
+    </div>
+  {/if}
+
   {#each grouped as section}
     {#if section.items.length}
       <section class="status-group">
@@ -255,6 +291,8 @@
 
   {#if !papers.length}
     <p class="empty">No papers yet.{isAdmin ? ' Add your first one above.' : ''}</p>
+  {:else if !visiblePapers.length}
+    <p class="empty">No papers by {authorFilter}.</p>
   {/if}
 </div>
 
@@ -334,6 +372,37 @@
   .paper-form .row { display: flex; gap: 0.85rem; }
   .paper-form .row label { flex: 1; }
   .form-actions { display: flex; gap: 0.6rem; margin-top: 0.5rem; }
+
+  .filter-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    margin-bottom: 2.5rem;
+  }
+  .filter-label {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--ink-muted);
+  }
+  .filter-bar select {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    padding: 0.35em 0.6em;
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    background: var(--bg);
+    color: var(--ink);
+    max-width: 18rem;
+  }
+  .filter-bar select:focus { outline: none; border-color: var(--accent); }
+  .filter-count {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--ink-muted);
+  }
 
   .status-group { margin-bottom: 2.75rem; }
   .status-group h2 {

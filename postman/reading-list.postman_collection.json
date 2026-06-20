@@ -1,0 +1,88 @@
+{
+  "info": {
+    "name": "Reading List API",
+    "description": "CRUD requests for the portfolio reading list (/api/papers).\n\nReads are public. Writes (POST/PUT/DELETE) require the admin token, sent as `Authorization: Bearer {{adminToken}}`.\n\nSet the collection/environment variables:\n- `baseUrl`   — e.g. http://localhost:5173 (local) or your Vercel URL\n- `adminToken` — the ADMIN_TOKEN value from your .env / Vercel env vars\n- `paperId`   — the id of a paper, used by Update and Delete",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:5173" },
+    { "key": "adminToken", "value": "" },
+    { "key": "paperId", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "List papers",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/papers",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "papers"]
+        },
+        "description": "Public. Returns all papers, newest first. No auth required."
+      },
+      "response": []
+    },
+    {
+      "name": "Create paper",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{adminToken}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Attention Is All You Need\",\n  \"authors\": \"Vaswani et al.\",\n  \"url\": \"https://arxiv.org/abs/1706.03762\",\n  \"venue\": \"NeurIPS\",\n  \"year\": \"2017\",\n  \"abstract\": \"We propose the Transformer, a model architecture relying entirely on attention mechanisms, dispensing with recurrence and convolutions.\",\n  \"status\": \"to-read\",\n  \"tags\": [\"NLP\", \"transformers\"],\n  \"notes\": \"\",\n  \"rating\": null\n}",
+          "options": { "raw": { "language": "json" } }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/papers",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "papers"]
+        },
+        "description": "Token required. Only `title` is mandatory; everything else is optional. Server sets `id`, `addedAt`, `readAt` — don't send those. Inner double-quotes inside the abstract must be escaped as \\\"."
+      },
+      "response": []
+    },
+    {
+      "name": "Update paper",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{adminToken}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"status\": \"read\",\n  \"rating\": 5\n}",
+          "options": { "raw": { "language": "json" } }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/papers/{{paperId}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "papers", "{{paperId}}"]
+        },
+        "description": "Token required. Partial update — send only the fields you want to change. Setting status to \"read\" stamps `readAt` automatically the first time."
+      },
+      "response": []
+    },
+    {
+      "name": "Delete paper",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{adminToken}}" }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/papers/{{paperId}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "papers", "{{paperId}}"]
+        },
+        "description": "Token required. Deletes the paper with the given id. Returns 204 No Content."
+      },
+      "response": []
+    }
+  ]
+}
