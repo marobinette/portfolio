@@ -5,7 +5,7 @@
       year: '2024-present',
       tags: ['NLP', 'BERT', 'Politics'],
       description:
-        'Analyzing emotional framing and rhetorical strategies in thousands of congressional email communications using transformer-based models and custom political lexicons. Collaborating with João Franco, Jeremy Elliott, and Atticus Tarleton.',
+        'Analyzing emotional framing and rhetorical strategies in thousands of congressional email communications using transformer-based models and custom political lexicons.',
       status: 'active',
     },
     {
