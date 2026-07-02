@@ -27,7 +27,7 @@ export {};
 
 declare module "$app/types" {
 	export interface AppTypes {
-		RouteId(): "/" | "/api" | "/api/papers" | "/api/papers/[id]" | "/blog" | "/blog/master-equations" | "/papers" | "/research";
+		RouteId(): "/" | "/api" | "/api/papers" | "/api/papers/[id]" | "/blog" | "/blog/jaccard-similarity" | "/blog/master-equations" | "/papers" | "/research";
 		RouteParams(): {
 			"/api/papers/[id]": { id: string }
 		};
@@ -37,11 +37,12 @@ declare module "$app/types" {
 			"/api/papers": { id?: string };
 			"/api/papers/[id]": { id: string };
 			"/blog": Record<string, never>;
+			"/blog/jaccard-similarity": Record<string, never>;
 			"/blog/master-equations": Record<string, never>;
 			"/papers": Record<string, never>;
 			"/research": Record<string, never>
 		};
-		Pathname(): "/" | "/api/papers" | `/api/papers/${string}` & {} | "/blog" | "/blog/master-equations" | "/papers" | "/research";
+		Pathname(): "/" | "/api/papers" | `/api/papers/${string}` & {} | "/blog" | "/blog/jaccard-similarity" | "/blog/master-equations" | "/papers" | "/research";
 		ResolvedPathname(): `${"" | `/${string}`}${ReturnType<AppTypes['Pathname']>}`;
 		Asset(): "/vcsi-logo.png" | string & {};
 	}

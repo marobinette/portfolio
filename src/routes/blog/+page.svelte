@@ -4,6 +4,13 @@
   // and using mdsvex (svelte markdown processor) to render them.
   const posts = [
     {
+      slug: 'jaccard-similarity',
+      title: 'Jaccard Similarity - A Simple Example',
+      date: 'July 2026',
+      description: 'A worked example of Jaccard similarity: measuring how much two top-k nearest-neighbor word lists overlap.',
+      tags: ['NLP', 'Math'],
+    },
+    {
       slug: 'master-equations',
       title: 'An Introduction to Master Equations',
       date: 'March 2026',
