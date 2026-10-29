@@ -50,11 +50,17 @@
     <ul class="now-list">
       <li>
         <span class="dot"></span>
-        First preprint is alive on the archive: https://arxiv.org/abs/2610.36187
+        <span>
+          First preprint is alive on the
+          <a href="https://arxiv.org/abs/2610.36187" target="_blank" rel="noopener">arXiv</a>
+        </span>
       </li>
       <li>
         <span class="dot"></span>
-        Doing exciting things with the Leahy Institute for Rural Partnerships: https://vtdatacollab.uvm.edu/
+        <span>
+          Doing exciting things with the
+          <a href="https://vtdatacollab.uvm.edu/" target="_blank" rel="noopener">Leahy Institute for Rural Partnerships</a>
+        </span>
       </li>
       <li>
         <span class="dot"></span>
@@ -158,6 +164,12 @@
     line-height: 1.5;
     color: var(--ink);
     align-items: flex-start;
+  }
+
+  .now-list a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
   }
 
   .dot {
