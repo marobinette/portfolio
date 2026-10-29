@@ -21,7 +21,7 @@
     <h1>Michael Robinette</h1>
 
     <p class="lead">
-      I'm a graduate student at the University of Vermont working at the
+      I'm a PhD student at the University of Vermont working at the
       intersection of computational methods and social systems. My research
       draws on natural language processing, network analysis, and mathematical
       modeling to understand how information moves through complex human systems.
@@ -50,15 +50,15 @@
     <ul class="now-list">
       <li>
         <span class="dot"></span>
-        Emotion analysis in congressional email communications
+        First preprint is alive on the archive: https://arxiv.org/abs/2610.36187
       </li>
       <li>
         <span class="dot"></span>
-        Semantic similarity for AI course identification across university catalogs
+        Doing exciting things with the Leahy Institute for Rural Partnerships: https://vtdatacollab.uvm.edu/
       </li>
       <li>
         <span class="dot"></span>
-        Mathematical modeling of misinformation dynamics
+        Bayesian modeling of the adoption of the double bongcloud on lichess.com and other things
       </li>
     </ul>
 

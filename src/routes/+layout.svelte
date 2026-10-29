@@ -7,6 +7,7 @@
     { href: '/research',  label: 'Research' },
     { href: '/blog',      label: 'Writing' },
     { href: '/papers',    label: 'Reading' },
+    { href: '/bearings',  label: 'Bearings' },
   ];
 </script>
 
