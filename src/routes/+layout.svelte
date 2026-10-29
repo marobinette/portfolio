@@ -7,7 +7,6 @@
     { href: '/research',  label: 'Research' },
     { href: '/blog',      label: 'Writing' },
     { href: '/papers',    label: 'Reading' },
-    { href: '/bearings',  label: 'Bearings' },
   ];
 </script>
 
@@ -17,7 +16,7 @@
 
 <header>
   <nav class="container">
-    <a href="/" class="wordmark"></a>
+    <a href="/" class="wordmark" aria-label="Home"></a>
     <ul>
       {#each nav as { href, label }}
         <li>

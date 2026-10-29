@@ -119,14 +119,4 @@
     margin: 0;
     line-height: 1.7;
   }
-
-  .note {
-    margin-top: 3rem;
-    font-size: 0.85rem;
-    color: var(--ink-muted);
-    background: var(--bg-alt);
-    border: 1px solid var(--rule);
-    border-radius: 4px;
-    padding: 1rem 1.25rem;
-  }
 </style>

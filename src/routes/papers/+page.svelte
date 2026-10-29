@@ -305,8 +305,6 @@
   .page-header h1 { margin-bottom: 0.75rem; }
   .subtitle { font-size: 1rem; color: var(--ink-muted); margin: 0 0 1.25rem; }
 
-  .admin-bar { display: flex; gap: 0.6rem; align-items: center; flex-wrap: wrap; }
-
   .btn {
     font-family: var(--font-mono);
     font-size: 0.75rem;
@@ -324,7 +322,7 @@
   .btn.ghost:hover { border-color: var(--accent); color: var(--accent); }
   .btn:disabled { opacity: 0.5; cursor: default; }
 
-  .token-input, .paper-form input, .paper-form select, .paper-form textarea {
+  .paper-form input, .paper-form select, .paper-form textarea {
     font-family: var(--font-body);
     font-size: 0.9rem;
     padding: 0.45em 0.65em;
@@ -334,9 +332,7 @@
     color: var(--ink);
     width: 100%;
   }
-  .token-input { width: auto; }
-  .paper-form input:focus, .paper-form select:focus, .paper-form textarea:focus,
-  .token-input:focus { outline: none; border-color: var(--accent); }
+  .paper-form input:focus, .paper-form select:focus, .paper-form textarea:focus { outline: none; border-color: var(--accent); }
 
   .error {
     background: #fbeaea;

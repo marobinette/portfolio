@@ -466,14 +466,6 @@
     line-height: 1.15;
   }
 
-  .lead {
-    font-size: 1.08rem;
-    line-height: 1.85;
-    font-weight: 400;
-    color: var(--ink);
-    margin-bottom: 0;
-  }
-
   section { margin: 2.5rem 0; }
 
   h2 {
